@@ -11,7 +11,12 @@ public class BattleManager : Singleton<BattleManager>
     [SerializeField] private float _tileSpeed = 2f;
     [SerializeField] private Transform _tileStartPos;
     [SerializeField] private Transform _tileEndPos;
-    
+
+    [Header("##Spawner")] 
+    [SerializeField] private EnemySpawner _enemySpawner;
+    [SerializeField] private float _enemySpawnTime;
+    [SerializeField] private float _enemySpawnUpdateTime;
+    [SerializeField] private bool _isEnemySpawn = false;
     #region UnityLifeSycle
 
     protected override void Awake()
@@ -28,6 +33,9 @@ public class BattleManager : Singleton<BattleManager>
     private void FixedUpdate()
     {
         MoveTiles();
+
+        UpdateSpawnEnemyTime();
+        UpdateSpawnEnemy();
     }
 
     #endregion
@@ -60,5 +68,36 @@ public class BattleManager : Singleton<BattleManager>
         return _tileSpeed;
     }
     #endregion
-    
+
+
+    #region Enemy
+
+    private void UpdateSpawnEnemy()
+    {
+        if (!_isEnemySpawn)
+            return;
+        
+        _enemySpawner.SpawnEnemy();
+        
+        _isEnemySpawn = false;
+        _enemySpawnUpdateTime = 0;
+    }
+
+    private void UpdateSpawnEnemyTime()
+    {
+        if (_isEnemySpawn)
+            return;
+
+        if (_enemySpawnUpdateTime <= _enemySpawnTime)
+        {
+            _enemySpawnUpdateTime += Time.fixedDeltaTime;
+            
+            if (_enemySpawnUpdateTime > _enemySpawnTime)
+            {
+                _isEnemySpawn = true;
+            }
+        }
+    }
+
+    #endregion
 }
