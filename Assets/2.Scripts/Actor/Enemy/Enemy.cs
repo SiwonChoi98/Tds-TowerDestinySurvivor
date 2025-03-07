@@ -5,24 +5,16 @@ using Unity.VisualScripting;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
-public class Enemy : BasePoolObject
+public class Enemy : Actor
 {
 
     public Rigidbody2D Rigidbody2D;
+    public ActorState ActorState;
     
     [Header("##StateMachine")]
     protected StateMachine<Enemy> _stateMachine;
     public StateMachine<Enemy> StateMachine => _stateMachine;
     public StateType CurrentStateType;
-    
-    [Header("##Move")]
-    [SerializeField] private float _moveSpeed;
-    public float MoveSpeed => _moveSpeed;
-
-    [Header("##Jump")] 
-    [SerializeField] private float _jumpPower;
-    public float JumpPower => _jumpPower;
-    
     
     [Header("##Order")]
     [SerializeField] private List<SpriteRenderer> _spriteRenderers;
@@ -37,6 +29,7 @@ public class Enemy : BasePoolObject
     private void Awake()
     {
         Rigidbody2D = GetComponent<Rigidbody2D>();
+        ActorState = GetComponent<ActorState>();
     }
 
     private void Start()

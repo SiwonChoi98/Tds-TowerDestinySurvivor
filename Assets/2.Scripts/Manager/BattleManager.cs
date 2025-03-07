@@ -17,12 +17,16 @@ public class BattleManager : Singleton<BattleManager>
     [SerializeField] private float _enemySpawnTime;
     [SerializeField] private float _enemySpawnUpdateTime;
     [SerializeField] private bool _isEnemySpawn = false;
+
+    private Camera _mainCamera;
+    public Camera MainCamera => _mainCamera;
     #region UnityLifeSycle
 
     protected override void Awake()
     {
         base.Awake();
         
+        _mainCamera = Camera.main; // Awake에서 카메라 캐싱
     }
 
     private void Start()

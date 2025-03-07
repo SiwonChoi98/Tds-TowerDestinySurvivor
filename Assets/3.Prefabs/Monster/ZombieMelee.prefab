@@ -12,10 +12,11 @@ GameObject:
   - component: {fileID: 7016750400611631704}
   - component: {fileID: 9202469378850143159}
   - component: {fileID: 213376771979066452}
+  - component: {fileID: -8302060993202731945}
   - component: {fileID: 5158982978097144083}
   m_Layer: 9
   m_Name: ZombieMelee
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -98,9 +99,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Rigidbody2D: {fileID: 0}
+  ActorState: {fileID: 0}
   CurrentStateType: 0
-  _moveSpeed: 3
-  _jumpPower: 27
   _spriteRenderers:
   - {fileID: 7969222207150852787}
   - {fileID: 2228757155372488290}
@@ -111,6 +111,25 @@ MonoBehaviour:
   _bodyTransform: {fileID: 4595630800838876859}
   _rayDistance: 0.4
   _backRayDistance: 0.8
+--- !u!114 &-8302060993202731945
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 319310827380095937}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 19b83941860ba5c42abdac58b4aafe1f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _actorCurrentHealth: 30
+  _actorDefense: 0
+  _actorDamage: 0
+  _actorAttackCooltime: 0
+  _actorAttackDistance: 0
+  _actorMoveSpeed: 3
+  _actorJumpPower: 28
 --- !u!70 &5158982978097144083
 CapsuleCollider2D:
   m_ObjectHideFlags: 0

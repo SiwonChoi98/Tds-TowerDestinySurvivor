@@ -14,7 +14,12 @@ public class EnemySpawner : MonoBehaviour
         enemyObject.SetPoolObjectType(PoolObjectType.ENEMY_MELEE);
 
         Enemy enemy = enemyObject as Enemy;
-        enemy.SetEnemy();
+        if (enemy)
+        {
+            enemy.SetEnemy();
+            enemy.GetComponent<ActorState>().SetHealth(30);
+        }
+        
     }
     
 }

@@ -1,0 +1,16 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9ff1f8442ff0ce44b12aec1568a1b5f, type: 3}
+  m_Name: ETCData
+  m_EditorClassIdentifier: 
+  DamageText: {fileID: 5969217641233627683, guid: ddec81f25a5806a4f87e219c27cd35f4,
+    type: 3}

@@ -14,7 +14,7 @@ public class JumpState : State<Enemy>
     public override void OnEnter()
     {
         _context.CurrentStateType = StateType.JUMP;
-        Jump(Vector2.up, _context.JumpPower);
+        Jump(Vector2.up, _context.ActorState.ActorJumpPower);
         //JumpForward();
         
         _elapsedTime = 0f;

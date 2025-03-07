@@ -6,6 +6,10 @@ public enum PoolObjectType
 {
     ENEMY_MELEE = 1001,
     ENEMY_RANGE = 1002,
+    
+    HERO_BULLET = 2001,
+    
+    TEXT_DAMAGE = 10001,
 }
 
 public enum StateType
