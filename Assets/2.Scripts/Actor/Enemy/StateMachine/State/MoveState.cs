@@ -14,7 +14,7 @@ public class MoveState : State<Enemy>
     }
     public override void FixedUpdate(float deltaTime) //게속업데이트
     {
-        Vector2 finalDirection = _context.GetEnemyDirection().normalized;
+        Vector2 finalDirection = Vector2.left.normalized;
         _context.Rigidbody2D.velocity = finalDirection * _context.MoveSpeed;
 
         _context.CheckJumpAction();

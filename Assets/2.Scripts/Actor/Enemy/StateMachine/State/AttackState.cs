@@ -1,10 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using DG.Tweening;
 public class AttackState : State<Enemy>
 {
-    private float _atttackTime = 0.7f;
+    private float _attackTime = 0.2f;
     private float _elapsedTime = 0f;
     
     public override void OnInitialized() //셋팅
@@ -15,12 +15,15 @@ public class AttackState : State<Enemy>
     public override void OnEnter() //한번실행
     {
         _context.CurrentStateType = StateType.ATTACK;
+        _context.Rigidbody2D.velocity = Vector2.zero;
+        
         AttackAction();
         _elapsedTime = 0f;
     }
     public override void FixedUpdate(float deltaTime) //게속업데이트
     {
-        if (_elapsedTime >= _atttackTime)
+        _elapsedTime += deltaTime;
+        if (_elapsedTime >= _attackTime)
         {
             _stateMachine.ChangeState<IdleState>();
         }

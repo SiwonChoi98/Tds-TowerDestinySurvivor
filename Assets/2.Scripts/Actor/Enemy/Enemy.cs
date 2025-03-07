@@ -18,11 +18,11 @@ public class Enemy : BasePoolObject
     [Header("##Move")]
     [SerializeField] private float _moveSpeed;
     public float MoveSpeed => _moveSpeed;
-    [SerializeField] private Vector2 _enemyDirection;
 
     [Header("##Jump")] 
     [SerializeField] private float _jumpPower;
     public float JumpPower => _jumpPower;
+    
     
     [Header("##Order")]
     [SerializeField] private List<SpriteRenderer> _spriteRenderers;
@@ -30,6 +30,7 @@ public class Enemy : BasePoolObject
     [Header("##RayCast")]
     [SerializeField] private Transform _bodyTransform;
     [SerializeField] private float _rayDistance;
+    [SerializeField] private float _backRayDistance;
 
     #region UnityLifeSycle
 
@@ -53,9 +54,8 @@ public class Enemy : BasePoolObject
         Gizmos.color = Color.red;
         Gizmos.DrawRay(_bodyTransform.position, Vector2.left * _rayDistance); 
         
-        //check jump
         // Gizmos.color = Color.blue;
-        // Gizmos.DrawRay(_bodyTransform.position, Vector2.down * _rayDistance); 
+        // Gizmos.DrawRay(_bodyTransform.position, Vector2.up * _backRayDistance); 
     }
 
     #endregion
@@ -98,11 +98,11 @@ public class Enemy : BasePoolObject
     {
         if (gameObject.layer == LayerMask.NameToLayer(InGameSettings.FirstFloorObjectLayer))
         {
-            AddEnemyOrder(2);
+            AddEnemyOrder(4);
         }
         else if (gameObject.layer == LayerMask.NameToLayer(InGameSettings.SecondFloorObjectLayer))
         {
-            AddEnemyOrder(1);
+            AddEnemyOrder(2);
         }
         else if (gameObject.layer == LayerMask.NameToLayer(InGameSettings.ThirdFloorObjectLayer))
         {
@@ -118,9 +118,9 @@ public class Enemy : BasePoolObject
         }
     }
 
-    public Collider2D UpdateRayCast(int targetLayer)
+    private Collider2D UpdateDirectionRayCast(int targetLayer)
     {
-        RaycastHit2D[] hits = Physics2D.RaycastAll(_bodyTransform.position, _enemyDirection, _rayDistance);
+        RaycastHit2D[] hits = Physics2D.RaycastAll(_bodyTransform.position, Vector2.left, _rayDistance);
 
         foreach (var hit in hits)
         {
@@ -132,27 +132,39 @@ public class Enemy : BasePoolObject
 
         return null;
     }
-
-    public Vector2 GetEnemyDirection()
-    {
-        return _enemyDirection;
-    }
-
-
+    // private Collider2D UpdateOppositeDirectionRayCast(int targetLayer)
+    // {
+    //     RaycastHit2D[] hits = Physics2D.RaycastAll(_bodyTransform.position, Vector2.up, _backRayDistance);
+    //
+    //     foreach (var hit in hits)
+    //     {
+    //         if (hit.collider.gameObject != gameObject && hit.collider.gameObject.layer == targetLayer) // 자기 자신 제외
+    //         {
+    //             return hit.collider; // 첫 번째로 감지된 적절한 오브젝트 반환
+    //         }
+    //     }
+    //
+    //     return null;
+    // }
+    
     #region ChangeState
 
     public void CheckJumpAction()
     {
-        Collider2D hitCollider = UpdateRayCast(gameObject.layer); //본인과 같은 레이어만 찾기
-        if (hitCollider == null)
+        Collider2D frontHit = UpdateDirectionRayCast(gameObject.layer); // 앞 체크
+        if (frontHit == null)
             return;
-        
+
+        // Collider2D backHit = UpdateOppositeDirectionRayCast(gameObject.layer);
+        // if (backHit != null)
+        //     return;
+
         _stateMachine.ChangeState<JumpState>();
     }
 
     public void CheckAttackAction()
     {
-        Collider2D hitCollider = UpdateRayCast(LayerMask.NameToLayer("Truck"));
+        Collider2D hitCollider = UpdateDirectionRayCast(LayerMask.NameToLayer("Truck"));
         if (hitCollider == null) 
             return;
         
@@ -160,4 +172,5 @@ public class Enemy : BasePoolObject
     }
 
     #endregion
+    
 }
