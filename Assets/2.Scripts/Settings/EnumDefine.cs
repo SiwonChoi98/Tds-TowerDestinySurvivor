@@ -9,7 +9,11 @@ public enum PoolObjectType
     
     HERO_BULLET = 2001,
     
+    BOX_OBJECT = 3001,
+    
     TEXT_DAMAGE = 10001,
+    
+    
 }
 
 public enum StateType

@@ -9,6 +9,7 @@ TagManager:
   - Ground
   - Enemy
   - Wall
+  - Box
   layers:
   - Default
   - TransparentFX
@@ -23,8 +24,8 @@ TagManager:
   - 2FObject
   - 3FObject
   - Truck
-  - 
-  - 
+  - Box
+  - Hero
   - 
   - 
   - 

@@ -24,6 +24,8 @@ public class Enemy : Actor
     [SerializeField] private float _rayDistance;
     [SerializeField] private float _backRayDistance;
 
+    [Header("##Attack")]
+    public BoxCollider2D AttackArea;
     #region UnityLifeSycle
 
     private void Awake()
@@ -157,7 +159,7 @@ public class Enemy : Actor
 
     public void CheckAttackAction()
     {
-        Collider2D hitCollider = UpdateDirectionRayCast(LayerMask.NameToLayer("Truck"));
+        Collider2D hitCollider = UpdateDirectionRayCast(LayerMask.NameToLayer("Box"));
         if (hitCollider == null) 
             return;
         

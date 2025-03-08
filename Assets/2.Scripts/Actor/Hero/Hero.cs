@@ -3,10 +3,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.Serialization;
 
 public class Hero : Actor
 {
-    private ActorState _actorState;
+    public ActorState ActorState;
     private HeroInput _heroInput;
     public HeroInput HeroInput => _heroInput;
     
@@ -22,7 +23,7 @@ public class Hero : Actor
 
     private void Awake()
     {
-        _actorState = GetComponent<ActorState>();
+        ActorState = GetComponent<ActorState>();
         _heroInput = GetComponent<HeroInput>();
         _heroAttack = GetComponent<HeroAttack>();
     }
@@ -87,7 +88,7 @@ public class Hero : Actor
             HeroBullet heroBullet = basePoolObject as HeroBullet;
             if (heroBullet)
             {
-                heroBullet.SetDamage(_actorState.ActorDamage);
+                heroBullet.SetDamage(ActorState.ActorDamage);
             }
         }
     }
