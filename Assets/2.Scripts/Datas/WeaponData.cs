@@ -5,6 +5,7 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "WeaponData", menuName = "Scriptable Object Asset/WeaponData")]
 public class WeaponData : ScriptableObject
 {
+    public string WeaponName;
     //무기 타입
     public WeaponType WeaponType;
     //생성될 무기
@@ -13,5 +14,5 @@ public class WeaponData : ScriptableObject
 
     public float Damage;
     public float AttackCooltime;
-    
+    public float AttackMaintenanceTime;
 }

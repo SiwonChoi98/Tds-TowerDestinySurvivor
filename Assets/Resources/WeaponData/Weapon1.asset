@@ -12,7 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0558c0c714206404caa0bf787f92b470, type: 3}
   m_Name: Weapon1
   m_EditorClassIdentifier: 
+  WeaponName: "\uB4DC\uB9B4"
   WeaponType: 1
-  Weapon: {fileID: 1171834449609283086, guid: 4780420a82c3811479b4b0d8ffc931fa, type: 3}
-  Damage: 20
-  AttackCooltime: 3
+  Weapon: {fileID: -5491523598286785956, guid: 4780420a82c3811479b4b0d8ffc931fa, type: 3}
+  Damage: 2
+  AttackCooltime: 0.5
+  AttackMaintenanceTime: 0

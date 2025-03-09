@@ -127,7 +127,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _actorCurrentHealth: 30
   _actorDefense: 0
-  _actorDamage: 5
+  _actorDamage: 3
   _actorAttackCooltime: 0
   _actorAttackDistance: 0
   _actorMoveSpeed: 3

@@ -48,13 +48,11 @@ public class AttackState : State<Enemy>
         {
             if (TargetBox(hitActor))
             {
-                Debug.Log("BOX Attack");
                 break;
             }
         
             if (TargetHero(hitActor))
             {
-                Debug.Log("hero Attack");
                 break;
             }
         }
