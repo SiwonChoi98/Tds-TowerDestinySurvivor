@@ -17,10 +17,16 @@ public class FlameThrower : Weapon
     protected override void Attack()
     {
         base.Attack();
-        StartCoroutine(DamageOverTime());
+        StartCoroutine(DamageOverTime(_weaponData.Damage));
     }
     
-    private IEnumerator DamageOverTime()
+    public override void Skill()
+    {
+        base.Skill();
+        StartCoroutine(DamageOverTime(_weaponData.Damage * 2));
+    }
+    
+    private IEnumerator DamageOverTime(float damage)
     {
         float damageInterval = 0.3f;
         LayerMask targetLayerMask = LayerMask.GetMask(
@@ -37,7 +43,7 @@ public class FlameThrower : Weapon
 
             foreach (Collider2D enemy in hitEnemies)
             {
-                enemy.GetComponent<ActorState>()?.TakeDamage_I(_weaponData.Damage);
+                enemy.GetComponent<ActorState>()?.TakeDamage_I(damage);
             }
 
             yield return new WaitForSeconds(damageInterval);

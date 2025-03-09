@@ -6,6 +6,9 @@ using UnityEngine;
 public class Box : BasePoolObject, IDamage
 {
     private Truck _truck;
+    [SerializeField] private Weapon _equipWeapon;
+    public Weapon EquipWeapon => _equipWeapon;
+    
     [SerializeField] private int _boxIndex;
     [SerializeField] private GameObject _boxCanvasObject;
     public Action UpdateBoxCanvas;
@@ -38,6 +41,8 @@ public class Box : BasePoolObject, IDamage
 
         _truck.SetBoxPosY(_boxIndex);
         
+        BattleManager.Instance.RemoveTruckBoxWeapon(_equipWeapon);
+        
         ReturnToPool();
     }
     public void ISpawnDamageText_I(float damage)
@@ -47,5 +52,10 @@ public class Box : BasePoolObject, IDamage
     public int GetBoxIndex()
     {
         return _boxIndex;
+    }
+
+    public void AddEquipWeapon(Weapon weapon)
+    {
+        _equipWeapon = weapon;
     }
 }

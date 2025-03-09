@@ -15,10 +15,23 @@ public class Weapon : BasePoolObject
         _weaponData = weaponData;
     }
 
+    public WeaponData GetWeaponData()
+    {
+        return _weaponData;
+    }
+
     protected virtual void Attack()
     {
         if (!_isAttacking)
             return;
+
+        StartCoroutine(AttackCoroutine());
+    }
+
+    public virtual void Skill()
+    {
+        _isAttacking = true;
+        _updateAttackCooltime = 0;
 
         StartCoroutine(AttackCoroutine());
     }

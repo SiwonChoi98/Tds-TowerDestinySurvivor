@@ -20,16 +20,16 @@ public class UI_Box : MonoBehaviour
     private void Btn_SelectWeapon(int index)
     {
         PoolObjectType poolObjectType = PoolObjectType.WEAPON_0;
-        WeaponType weaponType = WeaponType.WEAPON_0;
+        WeaponType weaponType = WeaponType.FLAMETHROWER;
         switch (index)
         {
             case 0:
                 poolObjectType = PoolObjectType.WEAPON_0;
-                weaponType = WeaponType.WEAPON_0;
+                weaponType = WeaponType.FLAMETHROWER;
                 break;
             case 1:
                 poolObjectType = PoolObjectType.WEAPON_1;
-                weaponType = WeaponType.WEAPON_1;
+                weaponType = WeaponType.DRILL;
                 break;
         }
 
@@ -47,6 +47,10 @@ public class UI_Box : MonoBehaviour
         {
             weapon.SetWeaponData(weaponData);
         }
+
+        BattleManager.Instance.Truck.Boxes[_buttonBoxIndex].AddEquipWeapon(weapon);
+        BattleManager.Instance.AddTruckBoxWeapon(weapon);
+        
         HideWeaponButton();
     }
 

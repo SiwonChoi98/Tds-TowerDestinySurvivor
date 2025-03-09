@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class BattleManager : Singleton<BattleManager>
@@ -26,6 +27,7 @@ public class BattleManager : Singleton<BattleManager>
     [Header("##Truck")]
     [SerializeField] private Truck _truck;
     public Truck Truck => _truck;
+    [SerializeField] private List<Weapon> _truckBoxWeapons;
     
     #region UnityLifeSycle
 
@@ -114,4 +116,25 @@ public class BattleManager : Singleton<BattleManager>
     }
 
     #endregion
+
+    public void AddTruckBoxWeapon(Weapon weapon)
+    {
+        _truckBoxWeapons.Add(weapon);
+    }
+
+    public void RemoveTruckBoxWeapon(Weapon weapon)
+    {
+        _truckBoxWeapons.Remove(weapon);
+    }
+
+    public void BoxSkill_All(WeaponType weaponType)
+    {
+        for (int i = 0; i < _truckBoxWeapons.Count; i++)
+        {
+            if (_truckBoxWeapons[i].GetWeaponData().WeaponType == weaponType)
+            {
+                _truckBoxWeapons[i].Skill();
+            }
+        }
+    }
 }

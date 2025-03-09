@@ -9,11 +9,17 @@ public class MainUI : Singleton<MainUI>
     [SerializeField] private GameObject _uiBoxGroup;
 
     [SerializeField] private Button Btn_gameStart;
+
+    [SerializeField] private Button Btn_DrillSkill;
+    [SerializeField] private Button Btn_FlameSkill;
+    
     protected override void Awake()
     {
         base.Awake();
         
         Btn_gameStart.onClick.AddListener(Btn_GameStart);
+        Btn_DrillSkill.onClick.AddListener(Btn_SkillDrill);
+        Btn_FlameSkill.onClick.AddListener(Btn_SkillFlame);
     }
 
     private void HideUIBoxGroup()
@@ -26,10 +32,10 @@ public class MainUI : Singleton<MainUI>
         Btn_gameStart.gameObject.SetActive(false);
     }
 
-    public void ShowUIBoxGroup()
-    {
-        _uiBoxGroup.SetActive(true);
-    }
+    // public void ShowUIBoxGroup()
+    // {
+    //     _uiBoxGroup.SetActive(true);
+    // }
 
     private void Btn_GameStart()
     {
@@ -37,5 +43,17 @@ public class MainUI : Singleton<MainUI>
         
         HideUIBoxGroup();
         HideBtnGameStart();
+    }
+    
+    //drill
+    private void Btn_SkillDrill()
+    {
+        BattleManager.Instance.BoxSkill_All(WeaponType.DRILL);
+    }
+
+    //flameThrower
+    private void Btn_SkillFlame()
+    {
+        BattleManager.Instance.BoxSkill_All(WeaponType.FLAMETHROWER);
     }
 }

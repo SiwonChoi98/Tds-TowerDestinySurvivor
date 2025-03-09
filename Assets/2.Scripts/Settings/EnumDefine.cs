@@ -8,6 +8,7 @@ public enum PoolObjectType
     ENEMY_RANGE = 1002,
     
     HERO_BULLET = 2001,
+    DRILL_BULLET = 2002,
     
     BOX_OBJECT = 3001,
     
@@ -31,7 +32,7 @@ public enum StateType
 
 public enum WeaponType
 {
-    WEAPON_0,
-    WEAPON_1,
+    FLAMETHROWER,
+    DRILL,
     
 }

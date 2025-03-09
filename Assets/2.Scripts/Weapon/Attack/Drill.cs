@@ -23,4 +23,23 @@ public class Drill : Weapon
             break;
         }
     }
+    
+    public override void Skill()
+    {
+        base.Skill();
+        
+        DrillWeaponData drillWeaponData = _weaponData as DrillWeaponData;
+        if (drillWeaponData)
+        {
+            BasePoolObject basePoolObject = PoolManager.Instance.SpawnFromPool(PoolObjectType.DRILL_BULLET, drillWeaponData.SkillBullet,
+                transform.position, Quaternion.identity);
+            
+            basePoolObject.SetPoolObjectType(PoolObjectType.DRILL_BULLET);
+            DrillBullet drillBullet = basePoolObject as DrillBullet;
+            if (drillBullet)
+            {
+                drillBullet.SetDamage(_weaponData.Damage * 2);
+            }
+        }
+    }
 }
