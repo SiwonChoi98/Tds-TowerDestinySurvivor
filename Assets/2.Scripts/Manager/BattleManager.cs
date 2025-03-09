@@ -5,6 +5,8 @@ using UnityEngine;
 
 public class BattleManager : Singleton<BattleManager>
 {
+    public bool IsGameStart = false;
+    
     [Header("##Map")]
     [SerializeField] private bool _isMapMoving = false;
     [SerializeField] private List<Tile> _tiles;
@@ -17,9 +19,14 @@ public class BattleManager : Singleton<BattleManager>
     [SerializeField] private float _enemySpawnTime;
     [SerializeField] private float _enemySpawnUpdateTime;
     [SerializeField] private bool _isEnemySpawn = false;
-
+    
     private Camera _mainCamera;
     public Camera MainCamera => _mainCamera;
+
+    [Header("##Truck")]
+    [SerializeField] private Truck _truck;
+    public Truck Truck => _truck;
+    
     #region UnityLifeSycle
 
     protected override void Awake()
@@ -36,6 +43,9 @@ public class BattleManager : Singleton<BattleManager>
     
     private void FixedUpdate()
     {
+        if (!IsGameStart)
+            return;
+        
         MoveTiles();
 
         UpdateSpawnEnemyTime();

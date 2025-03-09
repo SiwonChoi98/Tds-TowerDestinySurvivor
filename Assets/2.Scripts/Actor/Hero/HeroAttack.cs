@@ -15,12 +15,7 @@ public class HeroAttack : MonoBehaviour
 
     [SerializeField] private int _bulletSpawnCount;
     public int BulletSpawnCount => _bulletSpawnCount;
-    
-    [SerializeField] private float _attackCoolTime;
-    [SerializeField] private float _updateAttackTime;
-    
-    [SerializeField] private float _attackRange;
-    
+    private float _updateAttackTime;
     private bool _isAttackPossible = false;
 
     private void Update()
@@ -47,10 +42,10 @@ public class HeroAttack : MonoBehaviour
     {
         if (_isAttackPossible) return;
 
-        if (_attackCoolTime > _updateAttackTime)
+        if (_hero.ActorState.ActorAttackCooltime > _updateAttackTime)
         {
             _updateAttackTime += Time.deltaTime;
-            if (_attackCoolTime <= _updateAttackTime)
+            if (_hero.ActorState.ActorAttackCooltime <= _updateAttackTime)
             {
                 _updateAttackTime = 0;
                 _isAttackPossible = true;
@@ -64,7 +59,7 @@ public class HeroAttack : MonoBehaviour
             InGameSettings.SecondFloorObjectLayer, 
             InGameSettings.ThirdFloorObjectLayer);
         
-        Collider2D[] hits = Physics2D.OverlapCircleAll(transform.position, _attackRange, enemyLayerMask);
+        Collider2D[] hits = Physics2D.OverlapCircleAll(transform.position, _hero.ActorState.ActorAttackDistance, enemyLayerMask);
 
         if (hits.Length == 0) return null;
 

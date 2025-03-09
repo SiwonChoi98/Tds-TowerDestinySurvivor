@@ -320,11 +320,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 19b83941860ba5c42abdac58b4aafe1f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _actorCurrentHealth: 0
+  _actorCurrentHealth: 30
   _actorDefense: 0
   _actorDamage: 30
-  _actorAttackCooltime: 0
-  _actorAttackDistance: 0
+  _actorAttackCooltime: 1
+  _actorAttackDistance: 10
   _actorMoveSpeed: 0
   _actorJumpPower: 0
 --- !u!61 &758004258911850510

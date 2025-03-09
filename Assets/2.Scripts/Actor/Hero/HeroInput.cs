@@ -3,7 +3,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
-using UnityEngine.Serialization;
 
 public class HeroInput : MonoBehaviour
 {
@@ -21,6 +20,8 @@ public class HeroInput : MonoBehaviour
 
     private void Update()
     {
+        if (EventSystem.current.IsPointerOverGameObject()) return;
+        
         GetTouchDown();
         GetTouch();
         GetTouchUp();

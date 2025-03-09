@@ -7,6 +7,8 @@ using UnityEngine;
 public class Truck : MonoBehaviour
 {
     [SerializeField] private List<Box> _boxes;
+    public List<Box> Boxes => _boxes;
+    
     [SerializeField] private Hero _hero;
 
     [SerializeField] private List<float> _boxYPosList;

@@ -11,6 +11,9 @@ public enum PoolObjectType
     
     BOX_OBJECT = 3001,
     
+    WEAPON_0 = 4001,
+    WEAPON_1 = 4002,
+    
     TEXT_DAMAGE = 10001,
     
     
@@ -23,5 +26,12 @@ public enum StateType
     JUMP,
     DEAD,
     IDLE
+    
+}
+
+public enum WeaponType
+{
+    WEAPON_0,
+    WEAPON_1,
     
 }

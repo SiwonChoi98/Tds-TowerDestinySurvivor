@@ -54,7 +54,7 @@ public class ActorState : MonoBehaviour, IDamage
     }
     [Header("공격 사거리")]
     [SerializeField] private float _actorAttackDistance;
-
+    public float ActorAttackDistance => _actorAttackDistance;
 
     [Header("이동속도")]
     [SerializeField] private float _actorMoveSpeed;
