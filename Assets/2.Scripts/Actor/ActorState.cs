@@ -142,6 +142,7 @@ public class ActorState : MonoBehaviour, IDamage
         {
             BattleManager.Instance.StopMapMoving();
             MainUI.Instance.ShowFailedPopup();
+            BattleManager.Instance.GameOver();
         }
         _owner.ReturnToPool();
     }

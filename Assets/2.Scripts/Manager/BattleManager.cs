@@ -7,7 +7,7 @@ using UnityEngine;
 public class BattleManager : Singleton<BattleManager>
 {
     public bool IsGameStart = false;
-    
+    public bool IsGameOver = false;
     [Header("##Map")]
     [SerializeField] private bool _isMapMoving = false;
     [SerializeField] private List<Tile> _tiles;
@@ -33,6 +33,8 @@ public class BattleManager : Singleton<BattleManager>
     [SerializeField] private int _currentEnergy;
     [SerializeField] private float _maxEnergyAmount;
     [SerializeField] private float _currentEnergyAmount;
+    
+    
     #region UnityLifeSycle
 
     protected override void Awake()
@@ -51,12 +53,18 @@ public class BattleManager : Singleton<BattleManager>
         if (!IsGameStart)
             return;
         
+        if (IsGameOver)
+            return;
+        
         UpdateEnergy();
     }
 
     private void FixedUpdate()
     {
         if (!IsGameStart)
+            return;
+
+        if (IsGameOver)
             return;
         
         MoveTiles();
@@ -101,6 +109,10 @@ public class BattleManager : Singleton<BattleManager>
         _truck.StopWheelAnim();
     }
 
+    public void GameOver()
+    {
+        IsGameOver = true;
+    }
     
     #endregion
 

@@ -15,7 +15,7 @@ MonoBehaviour:
   WeaponName: "\uB4DC\uB9B4"
   WeaponType: 1
   Weapon: {fileID: -5491523598286785956, guid: 4780420a82c3811479b4b0d8ffc931fa, type: 3}
-  Damage: 2
+  Damage: 4
   AttackCooltime: 0.5
   AttackMaintenanceTime: 0
   SkillCost: 2

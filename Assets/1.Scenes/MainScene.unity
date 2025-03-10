@@ -7655,7 +7655,7 @@ MonoBehaviour:
   _tileStartPos: {fileID: 1283226581}
   _tileEndPos: {fileID: 867148516}
   _enemySpawner: {fileID: 752283493}
-  _enemySpawnTime: 0.7
+  _enemySpawnTime: 0.5
   _enemySpawnUpdateTime: 0
   _isEnemySpawn: 0
   _truck: {fileID: 1489341061}

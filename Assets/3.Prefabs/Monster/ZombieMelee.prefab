@@ -73,10 +73,10 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 2
+  m_Mass: 7
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 7
+  m_GravityScale: 9
   m_Material: {fileID: 6200000, guid: fe02f34b47ea405448bac4aa2c95b452, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
@@ -136,7 +136,7 @@ MonoBehaviour:
   _actorAttackCooltime: 0
   _actorAttackDistance: 0
   _actorMoveSpeed: 3
-  _actorJumpPower: 32
+  _actorJumpPower: 130
 --- !u!70 &5158982978097144083
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
