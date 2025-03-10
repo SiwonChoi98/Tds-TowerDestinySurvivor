@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Serialization;
 using Random = UnityEngine.Random;
 
 public class Enemy : Actor
@@ -10,6 +11,7 @@ public class Enemy : Actor
 
     public Rigidbody2D Rigidbody2D;
     public ActorState ActorState;
+    public Animator Animator;
     
     [Header("##StateMachine")]
     protected StateMachine<Enemy> _stateMachine;
@@ -32,6 +34,7 @@ public class Enemy : Actor
     {
         Rigidbody2D = GetComponent<Rigidbody2D>();
         ActorState = GetComponent<ActorState>();
+        Animator = GetComponent<Animator>();
     }
 
     private void Start()

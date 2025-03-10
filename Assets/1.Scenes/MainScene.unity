@@ -4900,7 +4900,17 @@ PrefabInstance:
     - target: {fileID: 7485272074846713091, guid: 39e73014526a04149a4b4bff2302893b,
         type: 3}
       propertyPath: _actorAttackCooltime
-      value: 100
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8562176766901758042, guid: 39e73014526a04149a4b4bff2302893b,
+        type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8562176766901758042, guid: 39e73014526a04149a4b4bff2302893b,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8958240697474582917, guid: 39e73014526a04149a4b4bff2302893b,
         type: 3}

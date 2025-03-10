@@ -12,6 +12,7 @@ public class Box : BasePoolObject, IDamage
     [SerializeField] private int _boxIndex;
     [SerializeField] private GameObject _boxCanvasObject;
     public Action UpdateBoxCanvas;
+    public Action UpdateChangeBodyColorAction;
     
     [SerializeField] private float _boxCurrentHealth;
     [SerializeField] private float _boxMaxHealth;
@@ -31,7 +32,8 @@ public class Box : BasePoolObject, IDamage
         
         if(!_boxCanvasObject.activeSelf) _boxCanvasObject.SetActive(true);
         UpdateBoxCanvas?.Invoke();
-
+        UpdateChangeBodyColorAction?.Invoke();
+        
         Dead();
     }
 

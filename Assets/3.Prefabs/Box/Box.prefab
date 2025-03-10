@@ -423,6 +423,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _hpSlider: {fileID: 134779646897404493}
+  _spriteRenderer: {fileID: 428821504350599970}
 --- !u!1 &6628118391875189848
 GameObject:
   m_ObjectHideFlags: 0
@@ -470,6 +471,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6da82f7a9a522204dafbcaffea4c93ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _equipWeapon: {fileID: 0}
+  _boxIndex: 0
   _boxCanvasObject: {fileID: 5470163909460436904}
   _boxCurrentHealth: 100
   _boxMaxHealth: 100

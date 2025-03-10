@@ -6,9 +6,11 @@ public class AttackState : State<Enemy>
 {
     private float _attackTime = 0.2f;
     private float _elapsedTime = 0f;
+    private static readonly int DoAttack = Animator.StringToHash("DoAttack");
 
     private const string _targetBoxLayer = "Box";
     private const string _targetHeroLayer = "Hero";
+    
     public override void OnInitialized() //셋팅
     {
         
@@ -18,6 +20,7 @@ public class AttackState : State<Enemy>
     {
         _context.CurrentStateType = StateType.ATTACK;
         _context.Rigidbody2D.velocity = Vector2.zero;
+        _context.Animator.SetTrigger(DoAttack);
         
         AttackAction();
         _elapsedTime = 0f;

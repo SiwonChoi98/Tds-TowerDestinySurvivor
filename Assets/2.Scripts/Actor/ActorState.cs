@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using JetBrains.Annotations;
 using UnityEngine;
 
 public class ActorState : MonoBehaviour, IDamage
@@ -28,6 +29,10 @@ public class ActorState : MonoBehaviour, IDamage
         get => _actorMaxHealth;
         set => _actorMaxHealth = value;
     }
+
+    public Action UpdateHealthAction;
+    public Action UpdateChangeBodyColorAction;
+    [SerializeField] private GameObject _healthCanvasObject;
     
     [Header("방어력")]
     [SerializeField] private int _actorDefense;
@@ -67,6 +72,7 @@ public class ActorState : MonoBehaviour, IDamage
     public void SetHealth(float health)
     {
         _actorCurrentHealth = health;
+        UpdateHealthAction?.Invoke();
     }
     
     public void TakeDamage_I(float damage)
@@ -76,6 +82,7 @@ public class ActorState : MonoBehaviour, IDamage
         
         _actorCurrentHealth -= damage;
         ISpawnDamageText_I(damage);
+        UpdateHealthCanvas();
         
         Dead();
     }
@@ -95,11 +102,24 @@ public class ActorState : MonoBehaviour, IDamage
         }
 
     }
+
+    private void UpdateHealthCanvas()
+    {
+        if(!_healthCanvasObject.activeSelf) 
+        {
+            _healthCanvasObject.SetActive(true);
+        }
+        
+        UpdateHealthAction?.Invoke();
+        UpdateChangeBodyColorAction?.Invoke();
+    }
     
     private void Dead()
     {
         if (_actorCurrentHealth > 0)
             return;
+        
+        _healthCanvasObject.SetActive(false);
         
         _owner.ReturnToPool();
     }
