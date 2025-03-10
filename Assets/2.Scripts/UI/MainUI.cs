@@ -12,7 +12,8 @@ public class MainUI : Singleton<MainUI>
 
     [SerializeField] private Button Btn_DrillSkill;
     [SerializeField] private Button Btn_FlameSkill;
-    
+
+    [SerializeField] private FailedPopup _failedPopup;
     protected override void Awake()
     {
         base.Awake();
@@ -30,6 +31,11 @@ public class MainUI : Singleton<MainUI>
     private void HideBtnGameStart()
     {
         Btn_gameStart.gameObject.SetActive(false);
+    }
+
+    public void ShowFailedPopup()
+    {
+        _failedPopup.gameObject.SetActive(true);
     }
 
     // public void ShowUIBoxGroup()

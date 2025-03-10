@@ -36,3 +36,9 @@ public enum WeaponType
     DRILL,
     
 }
+
+public enum ActorType
+{
+    HERO,
+    ENEMY,
+}

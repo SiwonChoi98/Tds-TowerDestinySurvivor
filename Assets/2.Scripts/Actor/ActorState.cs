@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using JetBrains.Annotations;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class ActorState : MonoBehaviour, IDamage
@@ -136,7 +137,11 @@ public class ActorState : MonoBehaviour, IDamage
     {
         if (_actorCurrentHealth > 0)
             return;
-        
+
+        if (_owner.ActorType == ActorType.HERO)
+        {
+            MainUI.Instance.ShowFailedPopup();
+        }
         _owner.ReturnToPool();
     }
 }
