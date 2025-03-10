@@ -54,6 +54,8 @@ public class UI_Box : MonoBehaviour
         BattleManager.Instance.AddTruckBoxWeapon(weapon);
         
         HideWeaponButton();
+        
+        SoundManager.Instance.Play_SFX(SFX_SoundType.BUTTON, 0.1f);
     }
 
     private void HideWeaponButton()

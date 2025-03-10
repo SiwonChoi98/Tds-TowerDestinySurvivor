@@ -91,6 +91,8 @@ public class Hero : Actor
                 heroBullet.SetDamage(ActorState.ActorDamage);
             }
         }
+        
+        SoundManager.Instance.Play_SFX(SFX_SoundType.HERO_SHOT, 0.1f);
     }
 
     public void SetGunShotRange(bool enable)

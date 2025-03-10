@@ -22,6 +22,8 @@ public class Drill : Weapon
             enemy.GetComponent<ActorState>()?.TakeDamage_I(_weaponData.Damage);
             break;
         }
+        
+        SoundManager.Instance.Play_SFX(SFX_SoundType.DRILL, 0.005f);
     }
     
     public override void Skill()
@@ -38,8 +40,10 @@ public class Drill : Weapon
             DrillBullet drillBullet = basePoolObject as DrillBullet;
             if (drillBullet)
             {
-                drillBullet.SetDamage(_weaponData.Damage * 2);
+                drillBullet.SetDamage(_weaponData.Damage + 10);
             }
         }
+        
+        SoundManager.Instance.Play_SFX(SFX_SoundType.DRILL, 0.1f);
     }
 }

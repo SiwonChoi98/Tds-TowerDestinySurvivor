@@ -37,6 +37,8 @@ public class FlameThrower : Weapon
         if (isSkill) ChangeFlameColor(Color.red);
         else ChangeFlameColor(Color.white);
         
+        SoundManager.Instance.Play_SFX(SFX_SoundType.FLAMETHROWER, 0.1f);
+        
         float damageInterval = 0.3f;
         LayerMask targetLayerMask = LayerMask.GetMask(
             InGameSettings.FirstFloorObjectLayer, 

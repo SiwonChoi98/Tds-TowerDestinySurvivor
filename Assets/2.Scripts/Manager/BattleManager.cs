@@ -42,6 +42,10 @@ public class BattleManager : Singleton<BattleManager>
         _mainCamera = Camera.main; //카메라 캐싱
     }
 
+    private void Start()
+    {
+        SoundManager.Instance.Play_BGM(BGM_SoundType.MAIN, 0.05f);
+    }
     private void Update()
     {
         if (!IsGameStart)
@@ -89,6 +93,11 @@ public class BattleManager : Singleton<BattleManager>
     public float GetTileSpeed()
     {
         return _tileSpeed;
+    }
+
+    public void SetMapMoving(bool enable)
+    {
+        _isMapMoving = enable;
     }
 
     

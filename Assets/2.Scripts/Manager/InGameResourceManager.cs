@@ -9,19 +9,19 @@ public class InGameResourceManager : Singleton<InGameResourceManager>
     public Dictionary<WeaponType, WeaponData> WeaponDataDic => _weaponDataDic;
 
     private Dictionary<WeaponType, int> _weaponSkillCostDataDic = new Dictionary<WeaponType, int>();
-    
     protected override void Awake()
     {
         base.Awake();
         
-        SetEtcData();
+        SetData();
         SetWeaponData();
     }
 
-    private void SetEtcData()
+    private void SetData()
     {
         _etcData = Resources.Load<EtcData>("ETCData");
     }
+    
 
     private void SetWeaponData()
     {

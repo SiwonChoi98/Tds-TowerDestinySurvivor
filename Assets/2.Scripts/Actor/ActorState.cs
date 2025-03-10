@@ -140,6 +140,7 @@ public class ActorState : MonoBehaviour, IDamage
 
         if (_owner.ActorType == ActorType.HERO)
         {
+            BattleManager.Instance.SetMapMoving(false);
             MainUI.Instance.ShowFailedPopup();
         }
         _owner.ReturnToPool();

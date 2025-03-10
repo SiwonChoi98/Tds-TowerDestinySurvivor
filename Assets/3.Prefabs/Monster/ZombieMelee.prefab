@@ -128,8 +128,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 19b83941860ba5c42abdac58b4aafe1f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _actorCurrentHealth: 30
-  _actorMaxHealth: 30
+  _actorCurrentHealth: 40
+  _actorMaxHealth: 40
   _healthCanvasObject: {fileID: 7556668394667478820}
   _actorDefense: 0
   _actorDamage: 3

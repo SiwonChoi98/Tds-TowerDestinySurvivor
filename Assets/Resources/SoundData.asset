@@ -1,0 +1,30 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0ba4c75189748084fa21fa7404222562, type: 3}
+  m_Name: SoundData
+  m_EditorClassIdentifier: 
+  BGM_SoundClip:
+    _serializedList:
+    - Key: 0
+      Value: {fileID: 8300000, guid: 3eeb6d0090de45d4890a65a674690ddb, type: 3}
+  SFX_SoundClip:
+    _serializedList:
+    - Key: 0
+      Value: {fileID: 8300000, guid: 80968682ad8ca45489a4a15820eefc4c, type: 3}
+    - Key: 4
+      Value: {fileID: 8300000, guid: 93a2352795204d749934c5e552f0b7b3, type: 3}
+    - Key: 3
+      Value: {fileID: 8300000, guid: 8f5b60b69c46669438a540a9c2ed6881, type: 3}
+    - Key: 1
+      Value: {fileID: 8300000, guid: 41583697045100d4c88ab5ed8bf4748c, type: 3}
+    - Key: 2
+      Value: {fileID: 8300000, guid: 72e37935f1a6ce343aecda58a94dd579, type: 3}

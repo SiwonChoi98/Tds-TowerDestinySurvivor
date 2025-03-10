@@ -42,3 +42,17 @@ public enum ActorType
     HERO,
     ENEMY,
 }
+
+public enum SFX_SoundType
+{
+    DRILL,
+    FLAMETHROWER,
+    HERO_SHOT,
+    FAILED,
+    BUTTON,
+}
+
+public enum BGM_SoundType
+{
+    MAIN,
+}

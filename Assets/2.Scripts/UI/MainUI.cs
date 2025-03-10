@@ -58,6 +58,8 @@ public class MainUI : Singleton<MainUI>
     public void ShowFailedPopup()
     {
         _failedPopup.gameObject.SetActive(true);
+        SoundManager.Instance.Play_SFX(SFX_SoundType.FAILED, 0.1f);
+        SoundManager.Instance.Stop_BGM();
     }
 
     // public void ShowUIBoxGroup()
@@ -71,6 +73,8 @@ public class MainUI : Singleton<MainUI>
         
         HideUIBoxGroup();
         HideBtnGameStart();
+        
+        SoundManager.Instance.Play_SFX(SFX_SoundType.BUTTON, 0.1f);
     }
     
     //drill
@@ -78,6 +82,8 @@ public class MainUI : Singleton<MainUI>
     {
         BattleManager.Instance.BoxSkill_All(WeaponType.DRILL);
         UpdateCurrentEnergyText();
+        
+        SoundManager.Instance.Play_SFX(SFX_SoundType.BUTTON, 0.1f);
     }
 
     public void ShowSkillDrill()
@@ -93,6 +99,7 @@ public class MainUI : Singleton<MainUI>
     {
         BattleManager.Instance.BoxSkill_All(WeaponType.FLAMETHROWER);
         UpdateCurrentEnergyText();
+        SoundManager.Instance.Play_SFX(SFX_SoundType.BUTTON, 0.1f);
     }
 
     public void ShowSkillFlame()
@@ -105,6 +112,8 @@ public class MainUI : Singleton<MainUI>
     
     public void Btn_RePlay()
     {
+        SoundManager.Instance.Play_SFX(SFX_SoundType.BUTTON, 0.1f);
+        
         SceneManager.LoadScene("MainScene");
     }
 }
