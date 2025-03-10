@@ -10,11 +10,17 @@ public class Truck : MonoBehaviour
     public List<Box> Boxes => _boxes;
     
     [SerializeField] private Hero _hero;
-
     [SerializeField] private List<float> _boxYPosList;
+    
+    private Animator _wheelAnimator;
+    private static readonly int IsRotation = Animator.StringToHash("IsRotation");
+
     private void Awake()
     {
         InitBoxPosY();
+
+        _wheelAnimator = GetComponentInChildren<Animator>();
+        PlayWheelAnim();
     }
 
     private void InitBoxPosY()
@@ -39,5 +45,15 @@ public class Truck : MonoBehaviour
         }
         
         _hero.transform.position = new Vector3(_hero.transform.position.x, _boxYPosList[_boxes.Count]);
+    }
+
+    public void StopWheelAnim()
+    {
+        _wheelAnimator.SetBool(IsRotation, false);
+    }
+
+    private void PlayWheelAnim()
+    {
+        _wheelAnimator.SetBool(IsRotation, true);
     }
 }

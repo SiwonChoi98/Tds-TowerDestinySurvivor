@@ -2950,7 +2950,7 @@ Transform:
   - {fileID: 1329812939}
   - {fileID: 77613283}
   - {fileID: 103721140}
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 1104325175}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &667996119
 GameObject:
@@ -4312,6 +4312,7 @@ Transform:
   - {fileID: 2069524925}
   - {fileID: 1965400844}
   - {fileID: 1837237530}
+  - {fileID: 663871621}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1119079173
@@ -6088,6 +6089,11 @@ PrefabInstance:
       propertyPath: _actorDamage
       value: 5
       objectReference: {fileID: 0}
+    - target: {fileID: 7485272074846713091, guid: 39e73014526a04149a4b4bff2302893b,
+        type: 3}
+      propertyPath: _actorAttackCooltime
+      value: 111
+      objectReference: {fileID: 0}
     - target: {fileID: 8562176766901758042, guid: 39e73014526a04149a4b4bff2302893b,
         type: 3}
       propertyPath: m_AnchorMax.x
@@ -7301,7 +7307,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: b8a13d1e86799e347af1e1ca3367f412, type: 3}
+  m_Sprite: {fileID: 21300000, guid: ce0c04a578d497c4295e5e265785bece, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -9168,5 +9174,4 @@ SceneRoots:
   - {fileID: 752283492}
   - {fileID: 1489341059}
   - {fileID: 879262171}
-  - {fileID: 663871621}
   - {fileID: 1104325175}

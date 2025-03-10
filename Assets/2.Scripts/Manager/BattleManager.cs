@@ -95,9 +95,10 @@ public class BattleManager : Singleton<BattleManager>
         return _tileSpeed;
     }
 
-    public void SetMapMoving(bool enable)
+    public void StopMapMoving()
     {
-        _isMapMoving = enable;
+        _isMapMoving = false;
+        _truck.StopWheelAnim();
     }
 
     
