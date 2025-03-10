@@ -7,6 +7,9 @@ public class InGameResourceManager : Singleton<InGameResourceManager>
     private EtcData _etcData;
     private Dictionary<WeaponType, WeaponData> _weaponDataDic = new Dictionary<WeaponType, WeaponData>();
     public Dictionary<WeaponType, WeaponData> WeaponDataDic => _weaponDataDic;
+
+    private Dictionary<WeaponType, int> _weaponSkillCostDataDic = new Dictionary<WeaponType, int>();
+    
     protected override void Awake()
     {
         base.Awake();
@@ -26,17 +29,18 @@ public class InGameResourceManager : Singleton<InGameResourceManager>
 
         foreach (var weapon in weaponDatas)
         {
-            // if (!_weaponDataDic.ContainsKey(weapon.WeaponType))
-            // {
-            //     _weaponDataDic[weapon.WeaponType] = new();
-            // }
-            
             _weaponDataDic[weapon.WeaponType] = weapon;
+            _weaponSkillCostDataDic[weapon.WeaponType] = weapon.SkillCost;
         }
     }
 
     public EtcData GetEtcData()
     {
         return _etcData;
+    }
+
+    public int GetWeaponSkillCost(WeaponType weaponType)
+    {
+        return _weaponSkillCostDataDic[weaponType];
     }
 }

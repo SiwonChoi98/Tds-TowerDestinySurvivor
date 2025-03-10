@@ -18,5 +18,6 @@ MonoBehaviour:
   Damage: 2
   AttackCooltime: 0.5
   AttackMaintenanceTime: 0
+  SkillCost: 2
   SkillBullet: {fileID: 7133159169243701782, guid: e7bdeaaacdd9d414984f5d27fb918417,
     type: 3}

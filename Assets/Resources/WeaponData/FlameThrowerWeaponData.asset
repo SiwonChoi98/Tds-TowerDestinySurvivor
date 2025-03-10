@@ -18,3 +18,4 @@ MonoBehaviour:
   Damage: 3
   AttackCooltime: 1.5
   AttackMaintenanceTime: 3
+  SkillCost: 4

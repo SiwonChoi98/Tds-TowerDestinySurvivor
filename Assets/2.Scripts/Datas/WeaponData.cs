@@ -13,4 +13,7 @@ public class WeaponData : ScriptableObject
     public float Damage;
     public float AttackCooltime;
     public float AttackMaintenanceTime;
+
+
+    public int SkillCost;
 }

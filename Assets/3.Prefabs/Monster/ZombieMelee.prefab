@@ -100,6 +100,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 542afe8d144ab904bb4d36440d469aa8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ActorType: 1
   Rigidbody2D: {fileID: 0}
   ActorState: {fileID: 0}
   Animator: {fileID: 0}

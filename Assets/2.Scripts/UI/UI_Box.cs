@@ -26,10 +26,12 @@ public class UI_Box : MonoBehaviour
             case 0:
                 poolObjectType = PoolObjectType.WEAPON_0;
                 weaponType = WeaponType.FLAMETHROWER;
+                MainUI.Instance.ShowSkillFlame();
                 break;
             case 1:
                 poolObjectType = PoolObjectType.WEAPON_1;
                 weaponType = WeaponType.DRILL;
+                MainUI.Instance.ShowSkillDrill();
                 break;
         }
 
