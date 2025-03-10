@@ -9,18 +9,26 @@ public class ActorCanvas : MonoBehaviour
 {
     private ActorState _actorState;
     [SerializeField] private Slider _hpSlider;
+    [SerializeField] private Slider _hpChaseSlider;
     [SerializeField] private List<SpriteRenderer> _bodySpriteRenderers;
-    
+    private WaitForSeconds _waitForSeconds = new WaitForSeconds(0.2f);
     private void Awake()
     {
         _actorState = GetComponentInParent<ActorState>();
-        _actorState.UpdateHealthAction += UpdateHealth;
-        _actorState.UpdateChangeBodyColorAction += ChangeBodyColor;
+        if (_actorState != null)
+        {
+            _actorState.UpdateHealthAction += UpdateHealth;
+            _actorState.UpdateChangeBodyColorAction += ChangeBodyColor;
+        }
+        else
+        {
+            Debug.LogError("ActorState is null in ActorCanvas!");
+        }
     }
 
-    public void OnEnable()
+    public void Start()
     {
-        UpdateHealth();
+        //UpdateHealth();
     }
 
     private void OnDisable()
@@ -42,6 +50,9 @@ public class ActorCanvas : MonoBehaviour
     private void UpdateHealth()
     {
         _hpSlider.value = _actorState.ActorCurrentHealth / _actorState.ActorMaxHealth;
+        
+        if(gameObject.activeInHierarchy)
+            StartCoroutine(UpdateHeroChaseSlider());
     }
 
     private void ChangeBodyColor()
@@ -62,5 +73,18 @@ public class ActorCanvas : MonoBehaviour
         {
             _bodySpriteRenderers[i].color = Color.white;
         }
+    }
+    
+    private IEnumerator UpdateHeroChaseSlider()
+    {
+        yield return _waitForSeconds;
+
+        while (_hpChaseSlider.value > _hpSlider.value) 
+        {
+            _hpChaseSlider.value -= Time.deltaTime;
+            yield return null;
+        }
+
+        _hpChaseSlider.value = _hpSlider.value;
     }
 }

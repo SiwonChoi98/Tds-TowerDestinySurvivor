@@ -23,7 +23,7 @@ public class ActorState : MonoBehaviour, IDamage
 
         }
     }
-    private float _actorMaxHealth;
+    [SerializeField] private float _actorMaxHealth;
     public float ActorMaxHealth
     {
         get => _actorMaxHealth;
@@ -69,10 +69,25 @@ public class ActorState : MonoBehaviour, IDamage
     [SerializeField] private float _actorJumpPower;
     public float ActorJumpPower => _actorJumpPower;
 
+    private void OnEnable()
+    {
+        _healthCanvasObject.SetActive(false);
+
+        if (_healthCanvasObject.activeSelf)
+        {
+            UpdateHealthAction?.Invoke();
+        }
+        
+    }
+
     public void SetHealth(float health)
     {
         _actorCurrentHealth = health;
-        UpdateHealthAction?.Invoke();
+        
+        if (_healthCanvasObject.activeSelf)
+        {
+            UpdateHealthAction?.Invoke();
+        }
     }
     
     public void TakeDamage_I(float damage)
@@ -109,17 +124,18 @@ public class ActorState : MonoBehaviour, IDamage
         {
             _healthCanvasObject.SetActive(true);
         }
-        
-        UpdateHealthAction?.Invoke();
-        UpdateChangeBodyColorAction?.Invoke();
+
+        if (_healthCanvasObject.activeSelf)
+        {
+            UpdateHealthAction?.Invoke();
+            UpdateChangeBodyColorAction?.Invoke();
+        }
     }
     
     private void Dead()
     {
         if (_actorCurrentHealth > 0)
             return;
-        
-        _healthCanvasObject.SetActive(false);
         
         _owner.ReturnToPool();
     }
