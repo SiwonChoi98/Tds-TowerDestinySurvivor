@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -5,6 +6,9 @@ using UnityEngine;
 
 public class FlameThrower : Weapon
 {
+    [SerializeField] private GameObject _attackPs;
+
+    [SerializeField] private List<ParticleSystem> _particleSystem;
     protected override void Update()
     {
         base.Update();
@@ -17,17 +21,22 @@ public class FlameThrower : Weapon
     protected override void Attack()
     {
         base.Attack();
-        StartCoroutine(DamageOverTime(_weaponData.Damage));
+        StartCoroutine(DamageOverTime(_weaponData.Damage, false));
     }
     
     public override void Skill()
     {
         base.Skill();
-        StartCoroutine(DamageOverTime(_weaponData.Damage * 2));
+        StartCoroutine(DamageOverTime(_weaponData.Damage * 2, true));
     }
     
-    private IEnumerator DamageOverTime(float damage)
+    [Obsolete("Obsolete")]
+    private IEnumerator DamageOverTime(float damage, bool isSkill)
     {
+        _attackPs.SetActive(true);
+        if (isSkill) ChangeFlameColor(Color.red);
+        else ChangeFlameColor(Color.white);
+        
         float damageInterval = 0.3f;
         LayerMask targetLayerMask = LayerMask.GetMask(
             InGameSettings.FirstFloorObjectLayer, 
@@ -48,6 +57,7 @@ public class FlameThrower : Weapon
 
             yield return new WaitForSeconds(damageInterval);
         }
+        _attackPs.SetActive(false);
     }
     
     public GameObject FindClosestEnemy()
@@ -82,6 +92,15 @@ public class FlameThrower : Weapon
         if (closestEnemy != null)
         {
             RotateGunToWorldPosition(closestEnemy.transform.position);
+        }
+    }
+
+    [Obsolete("Obsolete")]
+    private void ChangeFlameColor(Color color)
+    {
+        for (int i = 0; i < _particleSystem.Count; i++)
+        {
+            _particleSystem[i].startColor = color;
         }
     }
 }

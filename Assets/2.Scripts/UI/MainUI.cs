@@ -100,7 +100,7 @@ public class MainUI : Singleton<MainUI>
         if (Btn_FlameSkill.gameObject.activeSelf)
             return;
         Btn_FlameSkill.gameObject.SetActive(true); 
-        _drillSkillCost_T.text = InGameResourceManager.Instance.GetWeaponSkillCost(WeaponType.FLAMETHROWER).ToString();
+        _flameSkillCost_T.text = InGameResourceManager.Instance.GetWeaponSkillCost(WeaponType.FLAMETHROWER).ToString();
     }
     
     public void Btn_RePlay()

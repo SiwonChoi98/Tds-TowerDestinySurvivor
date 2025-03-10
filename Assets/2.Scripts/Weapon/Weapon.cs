@@ -44,6 +44,9 @@ public class Weapon : BasePoolObject
 
     protected virtual void Update()
     {
+        if (!BattleManager.Instance.IsGameStart)
+            return;
+        
         UpdateAttackTime();
     }
 
